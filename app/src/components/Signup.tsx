@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useModal } from "./Checkmodal";
+import Modal1 from "./Checkmodal";
+
+import { useNavigate } from "react-router-dom";
 // import { useForm } from "react-hook-form";
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import * as Yup from "yup";
@@ -21,8 +24,9 @@ interface SignUpFormState {
 //   phone_no: number;
 // };
 const Signup: React.FC = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [error, setError] = useState("");
+  const { isOpen, toggle } = useModal();
 
   const [formData, setFormData] = useState<SignUpFormState>({
     first_name: "",
@@ -78,8 +82,17 @@ const Signup: React.FC = () => {
       console.log(error);
       setError(error.response.data.message);
     } finally {
+      toggle();
     }
   };
+  function handlecancel() {
+    toggle();
+    navigate("/Login");
+  }
+  function handleError() {
+    toggle();
+    navigate("/");
+  }
 
   return (
     <div className="App">
@@ -162,7 +175,23 @@ const Signup: React.FC = () => {
         </div>
         <button type="submit">Sign Up</button>
       </form>
-      <span className="eror-msg">{error}</span>
+      <Modal1 isOpen={isOpen} toggle={toggle}>
+        {error ? (
+          <>
+            <p className="error-msg"> {error}</p>
+            <footer>
+              <button onClick={handleError}>ok </button>
+            </footer>
+          </>
+        ) : (
+          <>
+            <p> movie deleted successfully</p>
+            <footer>
+              <button onClick={handlecancel}>ok </button>
+            </footer>
+          </>
+        )}
+      </Modal1>
     </div>
   );
 };

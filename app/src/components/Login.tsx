@@ -30,6 +30,7 @@ const Login: React.FC = () => {
       );
       console.log(formData);
       console.log(response);
+      localStorage.setItem("token", response.data.token);
     } catch (error: any) {
       console.log(error);
       setError(error.response.data.message);
