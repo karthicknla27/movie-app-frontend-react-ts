@@ -1,0 +1,64 @@
+h1 {
+  text-align: center;
+  color: dodgerblue;
+  margin-top: 20px;
+}
+.edit-btn {
+  padding: 0;
+  background: none;
+  border: none;
+  /* width: 10%; */
+  height: fit-content;
+}
+.delete-btn {
+  padding: 0;
+  background: none;
+  border: none;
+  /* width: 10%; */
+  height: fit-content;
+  color: hsl(195, 85%, 41%);
+}
+.btn-wrap {
+  display: flex;
+  justify-content: end;
+}
+.fa {
+  font-size: 25px;
+}
+.edit-title,
+.add-title {
+  text-align: center;
+}
+.edit-form,
+.add-form {
+  /* width: 50%; */
+  margin: 0 auto;
+}
+.home-add-btn {
+  width: 20%;
+  /* height: fit-content; */
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+  margin: 0px 20px;
+  display: inline-block;
+  color: black !important;
+}
+form {
+  width: 50%;
+  margin: 0 auto;
+}
+.signup {
+  text-align: center;
+}
+input {
+  line-height: 10px !important;
+}
+.invalid-feedback {
+  color: red;
+}
+.error-msg {
+  color: red;
+}
